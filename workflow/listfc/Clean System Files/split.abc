@@ -98,9 +98,16 @@ s4
 	buildI 56
 	buildh _Cons 2
 .d 2 0
-	jmp s3
+	jmp s6
+.n 1 _ ea6
+.o 1 0
+n6
+	push_node _cycle_in_spine 1
 .o 2 0
-s3
+ea6
+	jsr_eval 0
+.o 2 0
+s6
 	eq_desc _Nil 0 0
 	jmp_true case.1
 	jmp case.2
@@ -111,56 +118,32 @@ case.1
 	rtn
 case.2
 	repl_args 2 2
-	jsr_eval 1
-	eq_desc _Nil 0 1
-	jmp_true case.3
-	pop_a 1
-	jmp s3.1
-case.3
-	buildh _Nil 0
-	buildh _Nil 0
-	push_a 2
-	buildh _Cons 2
-	build _ 1 n1
-	buildh _Cons 2
-	buildh _Nil 0
-	push_a 2
-	buildh _Cons 2
-	build _ 1 n2
-	fillh _Cons 2 4
-	pop_a 2
-.d 1 0
-	rtn
-s3.1
-	pop_a 2
-	pushD m_split
-	pushD x_3
-.d 0 2 ii
-	jmp _match_error
-.string x_3 "splitList"
-.n 1 _ ea2
-.o 1 0
-n2
-	push_node _cycle_in_spine 1
-.o 2 0
-ea2
-	jsr_eval 0
-.o 2 0
-s2
-	eq_desc _Nil 0 0
-	jmp_true case.4
-	jmp case.5
-case.4
-	fillh _Nil 0 1
-	pop_a 1
-.d 1 0
-	rtn
-case.5
-	repl_args 2 2
 	push_a 0
 	jsr_eval 0
 	pushI_a 1
 	pop_a 1
+	pushI 1
+	and%
+	pushI 0
+	eqI
+	pushB TRUE
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqB
+	jmp_false else.3
+	push_a 1
+	build _ 1 n6
+	buildh _Nil 0
+	push_a 2
+	buildh _Cons 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp e_StdList_s++
+else.3
+	pushI_a 0
 	pushI 1
 	and%
 	pushI 0
@@ -172,70 +155,37 @@ case.5
 	update_b 0 1
 	pop_b 1
 	eqB
-	jmp_false else.6
-	push_a 1
-	build _ 1 n2
+	jmp_false else.4
 	buildh _Nil 0
-	push_a 2
-	buildh _Cons 2
-	update_a 1 3
-	updatepop_a 0 2
-.d 3 0
-	jmp e_StdList_s++
-else.6
 	push_a 1
+	buildh _Cons 2
+	push_a 2
 	jsr_eval 0
-	updatepop_a 0 2
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 4
+	pop_a 1
 .d 2 0
-	jmp s2
-.n 1 _ ea1
+	jsr s6
 .o 1 0
-n1
-	push_node _cycle_in_spine 1
-.o 2 0
-ea1
-	jsr_eval 0
-.o 2 0
-s1
-	eq_desc _Nil 0 0
-	jmp_true case.7
-	jmp case.8
-case.7
-	fillh _Nil 0 1
-	pop_a 1
-.d 1 0
-	rtn
-case.8
-	repl_args 2 2
-	push_a 0
-	jsr_eval 0
-	pushI_a 1
-	pop_a 1
-	pushI 1
-	and%
-	pushI 0
-	eqI
-	pushB TRUE
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	eqB
-	jmp_false else.9
-	push_a 1
-	build _ 1 n1
-	buildh _Nil 0
-	push_a 2
-	buildh _Cons 2
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 0
 	jmp e_StdList_s++
-else.9
-	push_a 1
-	jsr_eval 0
-	updatepop_a 0 2
-.d 2 0
-	jmp s1
+else.4
+	pop_a 1
+	jmp s6.1
+s6.1
+	pop_a 2
+	pushD m_split
+	pushD x_6
+.d 0 2 ii
+	jmp _match_error
+.string x_6 "splitList;5"
 .impmod _system
 .implab _match_error

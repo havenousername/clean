@@ -13,9 +13,11 @@ splitListOdd [x:xs]
 | isOdd x == True = [x] ++ splitListOdd xs 
 = splitListOdd xs
 
-splitList :: [Int] -> [[Int]]
+// splitList :: [Int] -> [[Int]]
 splitList [] = []
-splitList [x] = [splitListOdd[x],splitListEven[x]]
+splitList [x:xs] 
+| isEven x == True = [x] ++ splitList xs
+| isOdd x == True = splitList xs ++ [x]
 // [x \\ x<-[x..(last xs)] | isOdd x] ]
 
 // // Start = splitList [1..12]
