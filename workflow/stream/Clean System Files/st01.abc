@@ -1,0 +1,119 @@
+.comp 920 0101110100100
+.start __st01_Start
+.depend "_SystemEnumStrict"
+.depend "_SystemStrictLists"
+.depend "StdStrictLists"
+.depend "_SystemEnum"
+.depend "StdEnum"
+.depend "StdMisc"
+.depend "StdFunctions"
+.depend "StdCharList"
+.depend "StdTuple"
+.depend "StdOrdList"
+.depend "StdList"
+.depend "StdClass"
+.depend "StdFile"
+.depend "StdString"
+.depend "_SystemArray"
+.depend "StdArray"
+.depend "StdChar"
+.depend "StdReal"
+.depend "StdInt"
+.depend "StdOverloaded"
+.depend "StdBool"
+.depend "StdEnv"
+.endinfo
+.module m_st01 "st01"
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdInt
+.implab e_StdInt_s-;7
+.export __st01_Start
+.o 0 0
+__st01_Start
+	build _ 0 n4
+.d 1 0
+	jmp _driver
+.n 0 _ ea4
+.o 1 0
+n4
+	push_node _cycle_in_spine 0
+.o 1 0
+ea4
+.o 1 0
+s4
+	buildAC "Hello"
+	buildh ARRAY 1
+	pushI 10
+.d 2 1 i
+	jmp s3
+.o 2 1 i
+s3
+	eqI_b 0 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	fillh _Nil 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.2
+	push_a 0
+	push_b 0
+	build_u _ 1 1 n7
+	push_a 1
+	fillh _Cons 2 3
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+.nu 1 1 _ _
+.o 1 0
+n7
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea7
+.o 2 1 i
+s7
+	pushI 1
+	push_b 1
+	subI
+	push_a 0
+	updatepop_a 0 1
+	updatepop_b 0 1
+.d 2 1 i
+	jmp s3
