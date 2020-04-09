@@ -82,45 +82,31 @@ n5
 ea5
 .o 1 0
 s5
-	buildI 12
-.d 2 0
+	pushI 24
+.d 1 1 i
 	jmp s3
-.o 2 0
+.o 1 1 i
 s3
-	pushI 2
-	push_a 0
-	updatepop_a 0 1
-.d 2 1 i
+	push_b 0
+	updatepop_b 0 1
+.d 1 1 i
 	jmp s4
-.o 2 1 i
+.o 1 1 i
 s4
+	push_b 0
 	pushI 2
-	push_b 1
-	ltI
-	jmp_false else.1
-	fillh _Nil 0 1
-	pop_a 1
-	pop_b 1
-.d 1 0
-	rtn
-else.1
-	pushI_a 0
-	push_b 1
 	buildI_b 2
-	push_a 1
-	update_a 1 2
-	updatepop_a 0 1
 	update_b 1 2
 	updatepop_b 0 1
-.d 3 2 ii
+.d 2 2 ii
 	jmp s6
-.o 3 2 ii
+.o 2 2 ii
 s6
 	push_b 0
 	push_b 2
 	ltI
 	notB
-	jmp_false else.2
+	jmp_false else.1
 	push_a 0
 	jsr_eval 0
 	pushI_a 1
@@ -137,72 +123,64 @@ s6
 	update_b 0 1
 	pop_b 1
 	eqI
-	jmp_false else.3
-	push_a 1
-	jsr_eval 0
-	pushI_a 2
-	pop_a 1
+	jmp_false else.2
+	push_b 0
 .d 0 1 i
 	jsr s1
 .o 0 1 b
-	jmp_false else.3
+	jmp_false else.2
 	push_b 1
 	push_b 1
-	push_a 1
-	push_a 1
-	build_u _ 2 2 n9
+	push_a 0
+	build_u _ 1 2 n9
 	buildI_b 0
-	fillh _Cons 2 4
-	pop_a 2
+	fillh _Cons 2 3
+	pop_a 1
 	pop_b 2
 .d 1 0
 	rtn
-else.3
+else.2
 	pushI 1
 	push_b 1
 	addI
 	push_b 2
-	push_a 1
-	push_a 1
+	push_a 0
 	push_b 1
 	update_b 1 2
 	update_b 0 1
 	pop_b 1
-	update_a 1 3
-	updatepop_a 0 2
+	updatepop_a 0 1
 	update_b 1 3
 	updatepop_b 0 2
-.d 3 2 ii
+.d 2 2 ii
 	jmp s6
-else.2
-	fillh _Nil 0 2
-	pop_a 2
+else.1
+	fillh _Nil 0 1
+	pop_a 1
 	pop_b 2
 .d 1 0
 	rtn
-.nu 2 2 _ _
+.nu 1 2 _ _
 .o 1 0
 n9
-	push_node_u _cycle_in_spine 2 2
-.o 3 2 ii
+	push_node_u _cycle_in_spine 1 2
+.o 2 2 ii
 ea9
-.o 3 2 ii
+.o 2 2 ii
 s9
 	pushI 1
 	push_b 1
 	addI
 	push_b 2
-	push_a 1
-	push_a 1
+	push_a 0
 	push_b 1
 	update_b 1 2
 	update_b 0 1
 	pop_b 1
-	update_a 1 3
-	updatepop_a 0 2
+	updatepop_a 0 1
 	update_b 1 3
 	updatepop_b 0 2
-.d 3 2 ii
+.d 2 2 ii
 	jmp s6
 .o 0 1 i
 s1
@@ -219,12 +197,12 @@ s2
 	pushI 1
 	push_b 2
 	eqI
-	jmp_false else.5
+	jmp_false else.4
 	pop_b 2
 	pushB TRUE
 .d 0 1 b
 	rtn
-else.5
+else.4
 	push_b 1
 	push_b 1
 	remI
@@ -234,12 +212,12 @@ else.5
 	update_b 0 1
 	pop_b 1
 	eqI
-	jmp_false else.6
+	jmp_false else.5
 	pop_b 2
 	pushB FALSE
 .d 0 1 b
 	rtn
-else.6
+else.5
 	pushI 1
 	push_b 2
 	subI

@@ -1,0 +1,103 @@
+module hw02
+import StdEnv
+
+// Given list of integers, find number of
+// different sums of continuous subsequences
+// Example: [1,2,3,4] has 10 continuous subsequences
+// [1], [2], [1,2], [3], [2,3], [1,2,3], [4], [3,4], [2,3,4], [1,2,3,4]
+// And there sums are [1,2,3,3,5,6,4,7,9,10], from which we need to remove
+// duplicates and we get [1,2,3,4,5,6,7,9,10] - Hence we ave 9 different sums
+// https://stackoverflow.com/questions/3988575/what-does-this-definition-of-contiguous-subsequences-mean
+
+
+// subS :: [Int] -> [[Int]]
+split:: Int [Int] -> [[Int]]
+split n xs = [take n xs] ++ [drop n xs]
+
+splitAgain:: [Int] -> [[Int]]
+splitAgain xs = [take 1 xs] ++ splitAgain (tl xs)
+
+length:: [Int] -> Int
+length x = foldr (+) 0 (map (\x = 1) x)
+
+
+splitOne:: [Int] Int -> [[Int]]
+splitOne x 0 = []
+splitOne x y = split y x ++ splitOne (x) (y-1)
+
+finalSplit:: [Int] -> [[Int]]
+finalSplit x  = splitAgain x ++ splitOne x (length x) 
+
+
+remove:: Int [Int] -> [Int]
+remove x [] = []
+remove x [y:ys] 
+| x == y = remove x ys
+| otherwise = [y:remove x ys]  
+
+removeDublicates:: [Int] -> [Int]
+removeDublicates [] = []
+removeDublicates [x:xs] = [x : removeDublicates(remove x xs)]
+
+// isEqual is a great piece of intuition you have, however it is unnecessary.
+//the '==' operator is predefined for type [a] given that '==' is defined for type 'a'.
+isEqual:: [Int] [Int] -> Bool
+isEqual [] [] = True
+isEqual [] xs = False
+isEqual ys [] = False
+isEqual [x:xs] [y:ys] 
+| x <> y = False
+| x == y = isEqual xs ys
+
+//in the case that you want to define your own instance of equality, here is how:
+
+instance == myType
+where
+    (==) a b = //some expression that returns boolean
+
+removeL :: [[Int]] -> [[Int]]
+removeL [x:xs] = removeD x xs 
+
+//so the idea you have here is a good start, however you need to be able
+//to go through each element of the list and filter out the duplicates from
+//the rest.
+removeD:: [[Int]] [[Int]] -> [[Int]]
+removeD first [] = []
+removeD first [x:xs] 
+| isEqual first x = removeD first xs 
+=  removeD x xs  
+
+//I just realized you're trying to remove duplicates from each sublist
+//within a big list. Do you want to define your own removeDup?
+//Or just use removeDup on a list of lists?
+
+// Both ideas are good I just couldnt realise how I can turn removeDup fuction 
+// to list of lists thats why I trid I agree)
+
+//Oh you're making your life so much harder than necessary. lol
+//Remember, a list of lists is still a list. So you can use normal list processing on it.
+
+//map, this function applies something to each element of a list.
+//if each element of the biglist is a sublist, then you can map some list function.
+
+//so in this case:
+
+lol :: [[Int]] -> [[Int]]
+lol bigList = map removeDup bigList
+
+//or alternatively
+
+
+lol bigList = [ removeDup subList \\ subList <- bigList] 
+//the second one is super extendable and flexible since you can then
+//condition on which lists you want to even apply it on
+// you can even tell it to remove empty sublists like so:
+
+lol bigList = [ removeDup subList \\ subList <- bigList | not(isEmpty subList)] 
+//now with that condition it will eliminate your empty sublists automatically.
+// you can also make it do other fun things (work on odd length lists? etc)
+//Thank you really much Evan. That is awesome! I will try it now on my computer. Yeah. Have a nice evening.
+
+//No problem, I hope this helped!
+
+Start = removeL [[1..4],[1..4],[1..4], [1..2], [1..4]]

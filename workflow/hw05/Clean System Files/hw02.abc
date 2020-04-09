@@ -1,5 +1,5 @@
 .comp 920 0101110100100
-.start __split_Start
+.start __hw02_Start
 .depend "_SystemEnumStrict"
 .depend "_SystemStrictLists"
 .depend "StdStrictLists"
@@ -23,7 +23,7 @@
 .depend "StdBool"
 .depend "StdEnv"
 .endinfo
-.module m_split "split"
+.module m_hw02 "hw02"
 .impmod _system
 .implab _cycle_in_spine
 .implab _type_error
@@ -59,150 +59,111 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
+.impmod _SystemEnum
+.impdesc e__SystemEnum_d_from_to;6
+.implab e__SystemEnum_n_from_to;6 e__SystemEnum_ea_from_to;6
 .impmod StdList
 .implab e_StdList_s++
+.impdesc e_StdList_dtake
+.implab e_StdList_ntake e_StdList_eatake
+.impdesc e_StdList_ddrop
+.implab e_StdList_ndrop e_StdList_eadrop
 .impmod StdInt
-.implab e_StdInt_sisEven;18
-.implab e_StdInt_sisOdd;19
-.export __split_Start
+.implab e_StdInt_s-;7
+.export __hw02_Start
 .o 0 0
-__split_Start
-	build _ 0 n2
+__hw02_Start
+	build _ 0 n9
 .d 1 0
 	jmp _driver
-.n 0 _ ea2
+.n 0 _ ea9
 .o 1 0
-n2
+n9
 	push_node _cycle_in_spine 0
 .o 1 0
-ea2
+ea9
 .o 1 0
-s2
-	buildh _Nil 0
-	buildI -4
-	buildh _Cons 2
-	buildI 0
-	buildh _Cons 2
-	buildI 5
-	buildh _Cons 2
-	buildI 234
-	buildh _Cons 2
-	buildI 5
-	buildh _Cons 2
-	buildI 87
-	buildh _Cons 2
-	buildI 3
-	buildh _Cons 2
-	buildI 56
-	buildh _Cons 2
-.d 2 0
-	jmp s1
+s9
+	buildI 4
+	buildI 1
+	build e__SystemEnum_d_from_to;6 2 e__SystemEnum_n_from_to;6
+	fillh d4 1 1
+.d 1 0
+	rtn
+.desc d4 _hnf l4 2 0 "splitOne"
+.a 2 ea4
 .o 2 0
-s1
-	buildh _Nil 0
-	push_a 1
-	build _ 1 n6
-	buildh _Cons 2
-	buildh _Nil 0
+l4
+	push_args 0 1 1
+	update_a 2 1
+	create
+	update_a 0 3
+	pop_a 1
+.o 3 0
+ea4
+	jsr_eval 1
+	pushI_a 1
+	update_a 0 1
+	pop_a 1
+.o 2 1 i
+s4
+	eqI_b 0 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	fillh _Nil 0 1
+	pop_a 1
+	pop_b 1
+.d 1 0
+	rtn
+case.2
+	push_b 0
+	push_a 0
+	build_u _ 1 1 n15
+	create
 	push_a 2
-	build _ 1 n5
-	buildh _Cons 2
+	push_b 0
+	updatepop_b 0 1
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+.d 2 1 i
+	jsr s1
+.o 1 0
 	update_a 1 2
 	updatepop_a 0 1
 .d 3 0
 	jmp e_StdList_s++
-.n 1 _ ea5
+.nu 1 1 _ _
 .o 1 0
-n5
-	push_node _cycle_in_spine 1
-.o 2 0
-ea5
-	jsr_eval 0
-.o 2 0
-s5
+n15
+	push_node_u _cycle_in_spine 1 1
+.o 2 1 i
+ea15
+.o 2 1 i
+s15
+	pushI 1
+	push_b 1
+	subI
 	push_a 0
 	updatepop_a 0 1
-.d 2 0
-	jmp s10
-.o 2 0
-s10
-	eq_desc _Cons 2 0
-	jmp_true case.1
-	jmp case.2
-case.1
-	repl_args 2 2
-	push_a 0
-	jsr_eval 0
-	pushI_a 1
-	pop_a 1
-	pushI 1
-	and%
-	pushI 0
-	eqI
-	notB
-	jmp_false else.3
+	updatepop_b 0 1
+.d 2 1 i
+	jmp s4
+.o 2 1 i
+s1
+	buildh _Nil 0
 	push_a 1
-	build _ 1 n5
-	push_a 1
-	fillh _Cons 2 4
-	pop_a 2
-.d 1 0
-	rtn
-else.3
-	push_a 1
-	jsr_eval 0
-	updatepop_a 0 2
-.d 2 0
-	jmp s5
-case.2
-	fillh _Nil 0 1
-	pop_a 1
-.d 1 0
-	rtn
-.n 1 _ ea6
-.o 1 0
-n6
-	push_node _cycle_in_spine 1
-.o 2 0
-ea6
-	jsr_eval 0
-.o 2 0
-s6
-	push_a 0
+	buildI_b 0
+	build e_StdList_ddrop 2 e_StdList_ndrop
+	buildh _Cons 2
+	buildh _Nil 0
+	push_a 2
+	buildI_b 0
+	build e_StdList_dtake 2 e_StdList_ntake
+	buildh _Cons 2
+	update_a 1 2
 	updatepop_a 0 1
-.d 2 0
-	jmp s9
-.o 2 0
-s9
-	eq_desc _Cons 2 0
-	jmp_true case.4
-	jmp case.5
-case.4
-	repl_args 2 2
-	push_a 0
-	jsr_eval 0
-	pushI_a 1
-	pop_a 1
-	pushI 1
-	and%
-	pushI 0
-	eqI
-	jmp_false else.6
-	push_a 1
-	build _ 1 n6
-	push_a 1
-	fillh _Cons 2 4
-	pop_a 2
-.d 1 0
-	rtn
-else.6
-	push_a 1
-	jsr_eval 0
-	updatepop_a 0 2
-.d 2 0
-	jmp s6
-case.5
-	fillh _Nil 0 1
-	pop_a 1
-.d 1 0
-	rtn
+	pop_b 1
+.d 3 0
+	jmp e_StdList_s++

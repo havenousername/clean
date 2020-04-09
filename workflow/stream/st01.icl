@@ -60,8 +60,80 @@ squaringBack num howMany = (squaringBack num (howMany-1))^2
 // Recursion with list
 
 // repeatn 
-repeat :: Int a -> [a]
-repeat 0 insert = [] 
-repeat counter insert = [insert:repeat(counter-1) insert]
 
-Start = repeat 10 "Hello"
+// Repeated Action : putting elements into a list
+// Stop condition : when we put enough elements inside the list
+repeat :: Int a -> [a]
+repeat 0 _ = [] 
+repeat counter insert 
+| counter < 0 = []
+= [insert] ++ repeat(counter-1) insert
+
+repeatN :: Int a -> [a]
+repeatN 0 _ = [] 
+repeatN counter insert 
+| counter < 0 = []
+= [insert:repeatN(counter-1) insert]
+
+
+
+// Start = repeat 1000000000 "Hello"
+
+// Tail recursion - is recursion that is linear on time
+// It takes all advantages of tail recursion optimazation which is done by almost all modern compilers 
+// It requires an additional variable, called accumulator 
+
+// We Must compete evaluation on each step
+repeatNTail :: Int a -> [a]
+repeatNTail howMany elem  
+| howMany < 0 = []
+=  repeatNTailAux howMany elem []
+
+repeatNTailAux :: Int a [a] -> [a]
+repeatNTailAux 0 _ accum = accum
+repeatNTailAux howMany elem accum = repeatNTailAux (howMany-1) elem (accum++[elem])
+
+// Start = repeatNTail 10000000 "Hi"
+
+addUp :: Int Int -> Int
+addUp a b 
+| a > b = addUp b a 
+= addUpAux a b [] 
+
+addUpAux :: Int Int [Int] -> Int
+addUpAux a b accum 
+| a == b = sum accum
+= addUpAux (a+1) b (accum ++ [a])
+
+// Start = addUp 5 10
+
+/*
+  Given the list of sublist numbers
+  Leave only sublist all prime numbers in the list
+*/
+
+// Start = [[1,2,3],[4,9,10 ]]
+
+condEven :: [Int] -> Bool
+condEven ourList = and(map isEven ourList)
+
+// Start = condEven [2,4,4,6]
+
+// Start = filter condEven [[2,3,4,5],[2,4,6],[1..5]]
+
+primeList :: [Int] -> Bool 
+primeList ourList = and(map isPrime ourList)
+
+isPrime :: Int -> Bool
+isPrime n = not(or(map (dividable n) [2..(n-1)]))
+
+dividable :: Int Int -> Bool 
+dividable n check = n rem check == 0
+
+primeListFilter :: [[Int]] -> [[Int]]
+primeListFilter ourList =  filter primeList (filter notEmpty ourList)
+
+notEmpty :: [Int] -> Bool
+notEmpty list = not(isEmpty list)
+
+Start = primeListFilter [[1,2],[4,6,8],[]]
