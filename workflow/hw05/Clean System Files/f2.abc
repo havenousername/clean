@@ -68,10 +68,9 @@
 .implab e_StdList_ntl e_StdList_eatl
 .impdesc e_StdList_dtake
 .implab e_StdList_ntake e_StdList_eatake
-.implab e_StdList_smap
+.implab e_StdList_slength;47
 .implab e_StdList_sisMember;51
 .impmod StdInt
-.implab e_StdInt_s+;6
 .implab e_StdInt_s-;7
 .implab e_StdInt_s==;16
 .implab e_StdInt_s<;17
@@ -80,62 +79,18 @@
 .export __f2_Start
 .o 0 0
 __f2_Start
-	build _ 0 n18
+	build _ 0 n12
 .d 1 0
 	jmp _driver
-.n 0 _ ea18
+.n 0 _ ea12
 .o 1 0
-n18
+n12
 	push_node _cycle_in_spine 0
 .o 1 0
-ea18
+ea12
 .o 1 0
-s18
+s12
 	buildh _Nil 0
-	buildI 5
-	buildh _Cons 2
-	buildI 4
-	buildh _Cons 2
-	buildI 3
-	buildh _Cons 2
-	buildI 2
-	buildh _Cons 2
-	buildI 1
-	buildh _Cons 2
-	buildI 7
-	buildh _Cons 2
-	buildI 6
-	buildh _Cons 2
-	buildI 56
-	buildh _Cons 2
-	buildI 5
-	buildh _Cons 2
-	buildI 4
-	buildh _Cons 2
-	buildI 3
-	buildh _Cons 2
-	buildI 12
-	buildh _Cons 2
-	buildI 9
-	buildh _Cons 2
-	buildI 8
-	buildh _Cons 2
-	buildI 6
-	buildh _Cons 2
-	buildI 4
-	buildh _Cons 2
-	buildI 5
-	buildh _Cons 2
-	buildI 4
-	buildh _Cons 2
-	buildI 2
-	buildh _Cons 2
-	buildI 3
-	buildh _Cons 2
-	buildI 2
-	buildh _Cons 2
-	buildI 1
-	buildh _Cons 2
 	buildI 3
 	buildh _Cons 2
 	buildI 6
@@ -155,9 +110,9 @@ s18
 	buildI 1
 	buildh _Cons 2
 .d 2 0
-	jmp s17
+	jmp s11
 .o 2 0
-s17
+s11
 	eq_desc _Nil 0 0
 	jmp_true case.1
 	jmp case.2
@@ -172,7 +127,7 @@ case.2
 	update_a 1 2
 	updatepop_a 0 1
 .d 2 0
-	jsr s13
+	jsr s7
 .o 1 0
 	create
 	push_a 1
@@ -180,15 +135,15 @@ case.2
 	update_a 0 1
 	pop_a 1
 .d 2 0
-	jsr s12
+	jsr s6
 .o 1 0
 .d 2 0
-	jmp s14
+	jmp s8
 .o 2 0
-s14
+s8
 	eq_desc _Cons 2 0
 	jmp_true case.3
-	jmp s14.1
+	jmp s8.1
 case.3
 	repl_args 2 2
 	jsr_eval 1
@@ -202,14 +157,14 @@ case.5
 	push_a 0
 	jsr_eval 0
 .d 1 0
-	jsr s5
+	jsr e_StdList_slength;47
 .o 0 1 i
 	push_a 1
 .d 1 0
 	jsr e_StdList_shd
 .o 1 0
 .d 1 0
-	jsr s5
+	jsr e_StdList_slength;47
 .o 0 1 i
 	ltI
 	jmp_false else.6
@@ -221,26 +176,26 @@ else.6
 	push_a 1
 	updatepop_a 0 2
 .d 2 0
-	jmp s14
-s14.1
+	jmp s8
+s8.1
 	pop_a 2
 	pushD m_f2
-	pushD x_14
+	pushD x_8
 .d 0 2 ii
 	jmp _match_error
-.string x_14 "takeBiggest"
+.string x_8 "takeBiggest"
 .o 2 0
-s13
+s7
 	push_a 0
 .d 1 0
-	jsr s5
+	jsr e_StdList_slength;47
 .o 0 1 i
 	create
 	push_a 1
 	update_a 1 2
 	updatepop_a 0 1
 .d 2 1 i
-	jsr s3
+	jsr s2
 .o 1 0
 	create
 	push_a 1
@@ -248,25 +203,25 @@ s13
 	update_a 0 1
 	pop_a 1
 .d 2 0
-	jsr s25
+	jsr s16
 .o 1 0
 .d 2 0
-	jmp s11
-.n 1 _ ea25
+	jmp s5
+.n 1 _ ea16
 .o 1 0
-n25
+n16
 	push_node _cycle_in_spine 1
 .o 2 0
-ea25
+ea16
 	jsr_eval 0
 .o 2 0
-s25
+s16
 	push_a 0
 	updatepop_a 0 1
 .d 2 0
-	jmp s41
+	jmp s33
 .o 2 0
-s41
+s33
 	eq_desc _Cons 2 0
 	jmp_true case.7
 	jmp case.8
@@ -275,11 +230,11 @@ case.7
 	push_a 0
 	jsr_eval 0
 .d 1 0
-	jsr s15
+	jsr s9
 .o 0 1 b
 	jmp_false else.9
 	push_a 1
-	build _ 1 n25
+	build _ 1 n16
 	push_a 1
 	fillh _Cons 2 4
 	pop_a 2
@@ -290,14 +245,14 @@ else.9
 	jsr_eval 0
 	updatepop_a 0 2
 .d 2 0
-	jmp s25
+	jmp s16
 case.8
 	fillh _Nil 0 1
 	pop_a 1
 .d 1 0
 	rtn
 .o 1 0
-s15
+s9
 	eq_desc _Nil 0 0
 	jmp_true case.10
 	jmp case.11
@@ -325,16 +280,16 @@ else.12
 	push_a 0
 	updatepop_a 0 1
 .d 1 0
-	jmp s15
-.n 1 _ ea12
+	jmp s9
+.n 1 _ ea6
 .o 1 0
-n12
+n6
 	push_node _cycle_in_spine 1
 .o 2 0
-ea12
+ea6
 	jsr_eval 0
 .o 2 0
-s12
+s6
 	eq_desc _Nil 0 0
 	jmp_true case.13
 	jmp case.14
@@ -348,7 +303,7 @@ case.14
 	push_a 1
 	push_a 1
 	build _ 2 n24
-	build _ 1 n12
+	build _ 1 n6
 	buildh _Nil 0
 	push_a 2
 	buildh _Cons 2
@@ -374,7 +329,7 @@ case.14
 	update_a 0 1
 	pop_a 1
 .d 2 0
-	jsr s12
+	jsr s6
 .o 1 0
 	update_a 1 3
 	updatepop_a 0 2
@@ -394,9 +349,9 @@ s23
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 0
-	jmp s40
+	jmp s32
 .o 3 0
-s40
+s32
 	eq_desc _Cons 2 0
 	jmp_true case.15
 	jmp case.16
@@ -405,12 +360,12 @@ case.15
 	push_a 0
 	jsr_eval 0
 .d 1 0
-	jsr s5
+	jsr e_StdList_slength;47
 .o 0 1 i
 	push_a 2
 	jsr_eval 0
 .d 1 0
-	jsr s5
+	jsr e_StdList_slength;47
 .o 0 1 i
 	ltI
 	notB
@@ -450,9 +405,9 @@ s24
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 0
-	jmp s39
+	jmp s31
 .o 3 0
-s39
+s31
 	eq_desc _Cons 2 0
 	jmp_true case.18
 	jmp case.19
@@ -461,12 +416,12 @@ case.18
 	push_a 0
 	jsr_eval 0
 .d 1 0
-	jsr s5
+	jsr e_StdList_slength;47
 .o 0 1 i
 	push_a 2
 	jsr_eval 0
 .d 1 0
-	jsr s5
+	jsr e_StdList_slength;47
 .o 0 1 i
 	ltI
 	jmp_false else.20
@@ -492,7 +447,7 @@ case.19
 .d 1 0
 	rtn
 .o 2 0
-s11
+s5
 	eq_desc _Nil 0 0
 	jmp_true case.21
 	jmp case.22
@@ -519,7 +474,7 @@ case.22
 	update_a 0 6
 	pop_a 1
 .d 3 0
-	jsr s33
+	jsr s18
 .o 1 0
 	create
 	push_a 1
@@ -527,29 +482,29 @@ case.22
 	update_a 0 1
 	pop_a 1
 .d 2 0
-	jsr s11
+	jsr s5
 .o 1 0
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 0
 	jmp e_StdList_s++
-.n 2 _ ea33
+.n 2 _ ea18
 .o 1 0
-n33
+n18
 	push_node _cycle_in_spine 2
 .o 3 0
-ea33
+ea18
 	jsr_eval 1
 .o 3 0
-s33
+s18
 	push_a 0
 	push_a 2
 	update_a 1 3
 	updatepop_a 0 2
 .d 3 0
-	jmp s38
+	jmp s26
 .o 3 0
-s38
+s26
 	eq_desc _Cons 2 0
 	jmp_true case.23
 	jmp case.24
@@ -560,12 +515,12 @@ case.23
 	push_a 3
 	jsr_eval 0
 .d 2 0
-	jsr s34
+	jsr s19
 .o 0 1 b
 	jmp_false else.25
 	push_a 1
 	push_a 3
-	build _ 2 n33
+	build _ 2 n18
 	push_a 1
 	fillh _Cons 2 5
 	pop_a 3
@@ -578,26 +533,26 @@ else.25
 	update_a 1 4
 	updatepop_a 0 3
 .d 3 0
-	jmp s33
+	jmp s18
 case.24
 	fillh _Nil 0 2
 	pop_a 2
 .d 1 0
 	rtn
 .o 2 0
-s34
+s19
 	push_a 1
 	push_a 1
 	update_a 1 3
 	updatepop_a 0 2
 .d 2 0
-	jsr s35
+	jsr s20
 .o 0 1 b
 	notB
 .d 0 1 b
 	rtn
 .o 2 0
-s35
+s20
 	eq_desc _Nil 0 0
 	jmp_true case.26
 	jmp case.27
@@ -632,7 +587,7 @@ case.31
 	eq_desc _Cons 2 2
 	jmp_true case.32
 	pop_a 2
-	jmp s35.1
+	jmp s20.1
 case.32
 	push_args 2 2 2
 	buildh _Nil 0
@@ -665,91 +620,32 @@ else.33
 	update_a 1 7
 	updatepop_a 0 6
 .d 2 0
-	jmp s35
+	jmp s20
 else.34
 	pop_a 4
-	jmp s35.1
-s35.1
+	jmp s20.1
+s20.1
 	pop_a 2
 	pushD m_f2
-	pushD x_35
+	pushD x_20
 .d 0 2 ii
 	jmp _match_error
-.string x_35 "isEqual;34"
-.o 1 0
-s5
-	buildh d21 0
-	create
-	push_a 2
-	push_a 2
-	update_a 2 3
-	update_a 1 2
-	update_a 0 1
-	pop_a 1
-	update_a 2 3
-	update_a 1 2
-	updatepop_a 0 1
-.d 3 0
-	jsr e_StdList_smap
-.o 1 0
-	pushI 0
-.d 1 1 i
-	jmp s31
-.o 1 1 i
-s31
-	eq_desc _Nil 0 0
+.string x_20 "isEqual;19"
+.o 2 1 i
+s2
+	eqI_b 0 0
 	jmp_true case.35
 	jmp case.36
 case.35
-	pop_a 1
-.d 0 1 i
-	rtn
-case.36
-	repl_args 2 2
-	push_a 1
-	jsr_eval 0
-	push_b 0
-	updatepop_b 0 1
-	update_a 1 2
-	updatepop_a 0 1
-.d 1 1 i
-	jsr s31
-.o 0 1 i
-	push_a 0
-	jsr_eval 0
-	pushI_a 1
-	pop_a 1
-	pop_a 1
-	addI
-.d 0 1 i
-	rtn
-.desc d21 _hnf l21 1 0 "<lambda>[line:29];30;20"
-.o 2 0
-l21
-	pop_a 1
-.o 1 0
-ea21
-	pop_a 1
-	pushI 1
-	buildI_b 0
-	pop_b 1
-.d 1 0
-	rtn
-.o 2 1 i
-s3
-	eqI_b 0 0
-	jmp_true case.37
-	jmp case.38
-case.37
 	fillh _Nil 0 1
 	pop_a 1
 	pop_b 1
 .d 1 0
 	rtn
-case.38
+case.36
 	push_a 0
 	push_b 0
-	build_u _ 1 1 n45
+	build_u _ 1 1 n37
 	push_a 1
 	jsr_eval 0
 	create
@@ -763,7 +659,7 @@ case.38
 	update_a 0 5
 	pop_a 1
 .d 3 0
-	jsr s2
+	jsr s1
 .o 1 0
 	update_a 1 2
 	updatepop_a 0 1
@@ -771,12 +667,12 @@ case.38
 	jmp e_StdList_s++
 .nu 1 1 _ _
 .o 1 0
-n45
+n37
 	push_node_u _cycle_in_spine 1 1
 .o 2 1 i
-ea45
+ea37
 .o 2 1 i
-s45
+s37
 	pushI 1
 	push_b 1
 	subI
@@ -784,29 +680,29 @@ s45
 	updatepop_a 0 1
 	updatepop_b 0 1
 .d 2 1 i
-	jmp s3
-.n 2 _ ea2
+	jmp s2
+.n 2 _ ea1
 .o 1 0
-n2
+n1
 	push_node _cycle_in_spine 2
 .o 3 0
-ea2
+ea1
 	jsr_eval 1
 .o 3 0
-s2
+s1
 	eq_desc _Nil 0 1
-	jmp_true case.39
-	jmp case.40
-case.39
+	jmp_true case.37
+	jmp case.38
+case.37
 	fillh _Nil 0 2
 	pop_a 2
 .d 1 0
 	rtn
-case.40
+case.38
 	push_a 1
 	build e_StdList_dtl 1 e_StdList_ntl
 	push_a 1
-	build _ 2 n2
+	build _ 2 n1
 	buildh _Nil 0
 	push_a 3
 	push_a 3

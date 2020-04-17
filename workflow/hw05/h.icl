@@ -96,7 +96,7 @@ quickDelete:: [[Int]] -> [[Int]]
 quickDelete [] = []
 quickDelete all=:[first:rest] =  quickDelete[x \\ x <- rest | notIsEqual first x] ++ [first]
 
-quickSort:: [[Int]] -> [[Int]] 
+quickSort:: [[Int]] -> [[Int]] // первая строчка описывает входные и выходные данные ф-ции
 quickSort [] = []
 quickSort all=:[first:rest] =  quickSort[x \\ x <- rest | length (x) <= length (first)] ++ [first] ++ quickSort[x \\ x <- rest | length (x) > length (first)]
 
