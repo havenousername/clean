@@ -1,5 +1,5 @@
 .comp 920 0101110100100
-.start __hw02_Start
+.start __p_Start
 .depend "_SystemEnumStrict"
 .depend "_SystemStrictLists"
 .depend "StdStrictLists"
@@ -23,7 +23,7 @@
 .depend "StdBool"
 .depend "StdEnv"
 .endinfo
-.module m_hw02 "hw02"
+.module m_p "p"
 .impmod _system
 .implab _cycle_in_spine
 .implab _type_error
@@ -59,22 +59,37 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.impmod _SystemEnum
-.implab e__SystemEnum_s_from;4
-.export __hw02_Start
+.record r5 aa 2 0 "SomeName"
+.export __p_Start
 .o 0 0
-__hw02_Start
-	build _ 0 n3
+__p_Start
+	build _ 0 n2
 .d 1 0
 	jmp _driver
-.n 0 _ ea3
+.n 0 _
 .o 1 0
-n3
+n2
 	push_node _cycle_in_spine 0
-.o 1 0
-ea3
-.o 1 0
-s3
-	buildI 1
+.d 0 0
+	jsr ea2
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 0 0
+ea2
+.o 0 0
+s2
+	buildB FALSE
+	buildI 5
 .d 2 0
-	jmp e__SystemEnum_s_from;4
+	jmp s1
+.o 2 0
+s1
+	pop_a 1
+	jsr_eval 0
+	pushB_a 0
+	pop_a 1
+.d 0 1 b
+	rtn

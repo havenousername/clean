@@ -13,7 +13,7 @@ fiboX n a b
 | a > n = []
 = [a] ++ fiboX n b (b+a)
 
-// Start = fibo 1
+// Start = [1..]
 
 // Prime number
 
@@ -25,7 +25,7 @@ isPrime n
 prime :: Int Int -> Bool
 prime n m
 | m == 1 = True
-| n rem m == 0 = False
+| n rem m == 0 = False      
 = prime n (m-1)
 
 // Start = isPrime 19
@@ -44,7 +44,7 @@ isPalindrone n
 | n < 0 = False
 = reverse(sequence n) == sequence n
 
-Start = isPalindrone 733337
+// Start = isPalindrone 733337
 
 
 

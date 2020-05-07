@@ -43,6 +43,8 @@ f3:: Int -> [Int]
 f3 x  =  [ n \\ n <- [1..x] | (x rem n) == 0 && isPrime n]
 
 
+Start = [ x\\ x <- [1..100] | isPrime x]
+
 // Start = f3 0 //[]
 // Start = f3 524287  //[1,524287]
 // Start = divisors 36
@@ -194,7 +196,7 @@ f10 x = isMember (x+1) (twoPower x)
 
 // Start = f10 7
 
-Start =  f10 (0)
+// Start =  f10 (0)
 
 
 

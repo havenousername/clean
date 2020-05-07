@@ -1,0 +1,322 @@
+.comp 920 0101110100100
+.start __task01_Start
+.depend "_SystemEnumStrict"
+.depend "_SystemStrictLists"
+.depend "StdStrictLists"
+.depend "_SystemEnum"
+.depend "StdEnum"
+.depend "StdMisc"
+.depend "StdFunctions"
+.depend "StdCharList"
+.depend "StdTuple"
+.depend "StdOrdList"
+.depend "StdList"
+.depend "StdClass"
+.depend "StdFile"
+.depend "StdString"
+.depend "_SystemArray"
+.depend "StdArray"
+.depend "StdChar"
+.depend "StdReal"
+.depend "StdInt"
+.depend "StdOverloaded"
+.depend "StdBool"
+.depend "StdEnv"
+.endinfo
+.module m_task01 "task01"
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdList
+.implab e_StdList_s++
+.impdesc e_StdList_dfilter
+.implab e_StdList_nfilter e_StdList_eafilter
+.impdesc e_StdList_dmap
+.implab e_StdList_nmap e_StdList_eamap
+.implab e_StdList_slength;47
+.impmod StdString
+.implab e_StdString_s==;2
+.impmod StdInt
+.implab e_StdInt_s<;17
+.export __task01_Start
+.o 0 0
+__task01_Start
+	build _ 0 n6
+.d 1 0
+	jmp _driver
+.n 0 _ ea6
+.o 1 0
+n6
+	push_node _cycle_in_spine 0
+.o 1 0
+ea6
+.o 1 0
+s6
+	buildh _Nil 0
+	buildAC "pineapple"
+	buildh ARRAY 1
+	buildAC "Ahmed"
+	buildh ARRAY 1
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildAC "pineapple"
+	buildh ARRAY 1
+	buildAC "Emad"
+	buildh ARRAY 1
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildAC "orange"
+	buildh ARRAY 1
+	buildAC "Beka"
+	buildh ARRAY 1
+	buildh _Tuple 2
+	buildh _Cons 2
+	buildAC "apple"
+	buildh ARRAY 1
+	buildAC "Zuka"
+	buildh ARRAY 1
+	buildh _Tuple 2
+	buildh _Cons 2
+.d 2 0
+	jmp s5
+.n 1 _ ea5
+.o 1 0
+n5
+	push_node _cycle_in_spine 1
+.o 2 0
+ea5
+	jsr_eval 0
+.o 2 0
+s5
+	eq_desc _Nil 0 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.2
+	push_args 0 2 2
+	jsr_eval 0
+	repl_args 2 2
+	pop_a 1
+	push_a 1
+	build _ 1 n5
+	buildh _Nil 0
+	push_a 2
+	buildh d10 1
+	push_a 5
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build e_StdList_dfilter 2 e_StdList_nfilter
+	buildh d8 0
+	build e_StdList_dmap 2 e_StdList_nmap
+	push_a 3
+	buildh _Tuple 2
+	buildh _Cons 2
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jsr e_StdList_s++
+.o 1 0
+.d 2 0
+	jmp s3
+.desc d10 _hnf l10 2 0 "<lambda>[line:34];74;9"
+.a 0 a10
+.o 2 0
+l10
+	repl_args 1 1
+.o 2 0
+a10
+.d 2 0
+	jsr ea10
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea10
+	push_a 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 1
+	jsr_eval 2
+	push_array 1
+	push_array 3
+	update_a 1 5
+	update_a 2 4
+	update_a 0 3
+	pop_a 3
+.o 3 0
+s10
+	push_a 0
+	push_a 3
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+.d 0 1 b
+	rtn
+.desc d8 _hnf l8 1 0 "<lambda>[line:34];53;7"
+.o 2 0
+l8
+	pop_a 1
+.o 1 0
+ea8
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 0
+.o 2 0
+s8
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.n 1 _ ea3
+.o 1 0
+n3
+	push_node _cycle_in_spine 1
+.o 2 0
+ea3
+	jsr_eval 0
+.o 2 0
+s3
+	eq_desc _Nil 0 0
+	jmp_true case.3
+	jmp case.4
+case.3
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.4
+	repl_args 2 2
+	jsr_eval 0
+	repl_args 2 2
+	push_a 1
+	push_a 1
+	buildh _Tuple 2
+	push_a 3
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	build _ 2 n2
+	build _ 1 n3
+	push_a 2
+	push_a 2
+	buildh _Tuple 2
+	fillh _Cons 2 5
+	pop_a 3
+.d 1 0
+	rtn
+.n 2 _ ea2
+.o 1 0
+n2
+	push_node _cycle_in_spine 2
+.o 3 0
+ea2
+	jsr_eval 1
+.o 3 0
+s2
+	eq_desc _Nil 0 1
+	jmp_true case.5
+	jmp case.6
+case.5
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.6
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	jsr_eval 0
+	repl_args 2 2
+	push_a 0
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+	jsr_eval 4
+	push_arg 4 2 1
+	jsr_eval 0
+	push_array 0
+	updatepop_a 0 1
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+	jmp_false else.7
+	push_arg 3 2 2
+	jsr_eval 0
+.d 1 0
+	jsr e_StdList_slength;47
+.o 0 1 i
+	push_a 1
+	jsr_eval 0
+.d 1 0
+	jsr e_StdList_slength;47
+.o 0 1 i
+	ltI
+	jmp_false else.7
+	push_a 2
+	jsr_eval 0
+	push_a 4
+	update_a 1 6
+	updatepop_a 0 5
+.d 3 0
+	jmp s2
+else.7
+	push_a 2
+	push_a 4
+	build _ 2 n2
+	push_a 2
+	push_a 2
+	buildh _Tuple 2
+	fillh _Cons 2 7
+	pop_a 5
+.d 1 0
+	rtn

@@ -1,5 +1,5 @@
 .comp 920 0101110100100
-.start __hw02_Start
+.start __trees_Start
 .depend "_SystemEnumStrict"
 .depend "_SystemStrictLists"
 .depend "StdStrictLists"
@@ -23,7 +23,7 @@
 .depend "StdBool"
 .depend "StdEnv"
 .endinfo
-.module m_hw02 "hw02"
+.module m_trees "trees"
 .impmod _system
 .implab _cycle_in_spine
 .implab _type_error
@@ -59,22 +59,95 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.impmod _SystemEnum
-.implab e__SystemEnum_s_from;4
-.export __hw02_Start
+.impmod StdList
+.impdesc e_StdList_d++
+.implab e_StdList_s++
+.implab e_StdList_n++ e_StdList_ea++
+.desc0 d18 0 "Jan"
+.desc0 d19 1 "Feb"
+.desc0 d20 2 "Mar"
+.desc0 d21 3 "Apr"
+.desc0 d22 4 "May"
+.record r12 aaa 3 0 "Date"
+.desc d23 _hnf _add_arg 1 0 "On"
+.desc d24 _hnf _hnf 0 0 "Off"
+.desc d25 _hnf _add_arg 3 0 "Node"
+.desc d26 _hnf _hnf 0 0 "Leaf"
+.export __trees_Start
 .o 0 0
-__hw02_Start
-	build _ 0 n3
+__trees_Start
+	build _ 0 n8
 .d 1 0
 	jmp _driver
-.n 0 _ ea3
+.n 0 _ ea8
 .o 1 0
-n3
+n8
 	push_node _cycle_in_spine 0
 .o 1 0
-ea3
+ea8
 .o 1 0
-s3
-	buildI 1
+s8
+	create
+.d 1 0
+	jsr s5
+.o 1 0
 .d 2 0
-	jmp e__SystemEnum_s_from;4
+	jmp s7
+.n 1 _ ea7
+.o 1 0
+n7
+	push_node _cycle_in_spine 1
+.o 2 0
+ea7
+	jsr_eval 0
+.o 2 0
+s7
+	eq_desc d26 0 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.2
+	repl_args 3 3
+	push_a 2
+	build _ 1 n7
+	buildh _Nil 0
+	push_a 2
+	buildh _Cons 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 2
+	jsr_eval 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 4
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s7
+.o 1 0
+	update_a 1 4
+	updatepop_a 0 3
+.d 3 0
+	jmp e_StdList_s++
+.o 1 0
+s5
+	buildh d26 0
+	buildh d26 0
+	buildI 12
+	buildh d25 3
+	buildh d26 0
+	buildh d26 0
+	buildI 6
+	buildh d25 3
+	buildI 8
+	fillh d25 3 3
+.d 1 0
+	rtn

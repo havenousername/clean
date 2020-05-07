@@ -136,9 +136,9 @@ squareRootTest x  = (not(isEmpty([n \\n<- [1..x] | n*n == x])))
 
 
 powerOfTwoTest:: Int -> Bool
-powerOfTwoTest x = isMember list
+powerOfTwoTest x = isMember x list
 where 
-  pow2 = [ a^2\\ a<-[1..]]
+  pow2 = [a^2\\ a<-[0..]]
   list  = takeWhile ((>=) x) pow2
 
 cubeRoot:: Int -> Int
@@ -148,8 +148,37 @@ squareRoot:: Int -> Int
 squareRoot x = hd [n \\n<- [1..x] | n*n == x]
 
 cubes2:: [Int] -> ([Int], [Int])
-cubes2 list = ([cubeRoot x \\ x <- list | cubeRootTest x],[squareRoot x \\ x <- list | squareRootTest x]) 
+cubes2 list = ([cubeRoot x \\ x <- list | cubeRootTest x],[toInt( ln (toReal x) / (ln 2.0)) \\ x <- list | powerOfTwoTest x]) 
 
-Start = cubes2 [64, 16, 24, 15, 1, 8]
+// Start = cubes2 [64, 16, 24, 15, 1, 8]
+// Start = cubes2 [25..60]
 // Start = squareRoot 8
 // cubes2:: [Int] -> ([Int], [Int])
+
+
+isPrime:: Int -> Bool
+isPrime  x 
+| x <= 1 = False
+= isEmpty[n \\ n <- [1..x] | x rem x == 0]
+
+// Start = isPrime 1
+
+
+// Here we generate a list which we will use later 
+// primeList:: Int -> [Int]
+// primeList n = [x \\ x <- [1..n] | isPrime x ]
+
+// take tuple list of prime indexes
+//the problem is how we can generate indexes
+// takeToTuple:: [Int] -> [(Int, Int)]
+// takeToTuple list = [ (list!!(i-1), i) \\ i <- indices]
+// where
+  // len = length list
+  // here is the answer. We take while it is less then length all prime indexes !!!!!
+  // indices = takeWhile ((>=) len) primeList
+
+// Start = takeToTuple [1,5,8]
+
+Start =  [x \\ x <- [1..10] | isPrime x]
+
+

@@ -1,0 +1,396 @@
+.comp 920 0101110100100
+.start __hw07_Start
+.depend "_SystemEnumStrict"
+.depend "_SystemStrictLists"
+.depend "StdStrictLists"
+.depend "_SystemEnum"
+.depend "StdEnum"
+.depend "StdMisc"
+.depend "StdFunctions"
+.depend "StdCharList"
+.depend "StdTuple"
+.depend "StdOrdList"
+.depend "StdList"
+.depend "StdClass"
+.depend "StdFile"
+.depend "StdString"
+.depend "_SystemArray"
+.depend "StdArray"
+.depend "StdChar"
+.depend "StdReal"
+.depend "StdInt"
+.depend "StdOverloaded"
+.depend "StdBool"
+.depend "StdEnv"
+.endinfo
+.module m_hw07 "hw07"
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdOrdList
+.implab e_StdOrdList_ssort
+.impmod StdList
+.implab e_StdList_shd
+.implab e_StdList_sfilter
+.implab e_StdList_sreverse
+.impmod StdClass
+.impdesc e_StdClass_rOrd;
+.impmod StdReal
+.implab e_StdReal_s<;12
+.impmod StdOverloaded
+.impdesc e_StdOverloaded_r<;
+.impmod StdBool
+.implab e_StdBool_snot
+.implab e_StdBool_s==;3
+.desc0 d40 0 "January"
+.desc0 d41 1 "February"
+.desc0 d42 2 "March"
+.desc0 d43 3 "April"
+.desc0 d44 4 "May"
+.desc0 d45 5 "June"
+.desc0 d46 6 "July"
+.desc0 d47 7 "August"
+.desc0 d48 8 "September"
+.desc0 d49 9 "October"
+.desc0 d50 10 "November"
+.desc0 d51 11 "December"
+.desc0 d52 0 "Male"
+.desc0 d53 1 "Female"
+.desc0 d54 2 "AttackHelicopter"
+.desc0 d55 3 "Nghia"
+.record r25 aaa 3 0 "Date"
+.record r29 aaaaa 5 0 "Person"
+.record r35 aaaa 4 0 "Account"
+.export __hw07_Start
+.o 0 0
+__hw07_Start
+	build _ 0 n15
+.d 1 0
+	jmp _driver
+.n 0 _
+.o 1 0
+n15
+	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea15
+.o 1 0
+	fillh ARRAY 1 1
+.d 1 0
+	rtn
+.o 0 0
+ea15
+.o 0 0
+s15
+	buildh _Nil 0
+	build _ 0 n9
+	buildh _Cons 2
+	build _ 0 n8
+	buildh _Cons 2
+.d 1 0
+	jmp s13
+.o 1 0
+s13
+	eq_desc _Cons 2 0
+	jmp_true case.1
+	jmp s13.1
+case.1
+	push_args 0 2 2
+	pop_a 1
+	jsr_eval 0
+	eq_desc _Cons 2 0
+	jmp_true case.2
+	pop_a 1
+	jmp s13.1
+case.2
+	repl_args 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	repl_args 4 4
+	pop_a 4
+	buildh d19 0
+	create
+	push_a 2
+	push_a 2
+	update_a 2 3
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	update_a 2 3
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jsr e_StdOrdList_ssort
+.o 1 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr e_StdList_sreverse
+.o 1 0
+	buildh d18 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdList_sfilter
+.o 1 0
+.d 1 0
+	jsr e_StdList_shd
+.o 1 0
+	repl_r_args 4 0
+.d 4 0
+	jmp s14
+s13.1
+	pop_a 1
+	pushD m_hw07
+	pushD x_13
+.d 0 2 ii
+	jmp _match_error
+.string x_13 "soRich"
+.desc d19 _hnf l19 2 0 "<;18"
+.a 0 a19
+.o 2 0
+l19
+	repl_args 1 1
+.o 2 0
+a19
+.d 2 0
+	jsr ea19
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea19
+	jsr_eval 1
+	jsr_eval 0
+	push_r_args 1 4 0
+	push_r_args 4 4 0
+	update_a 7 9
+	update_a 5 7
+	update_a 3 5
+	update_a 1 3
+	update_a 6 8
+	update_a 4 6
+	update_a 2 4
+	update_a 0 2
+	pop_a 2
+.o 8 0
+s19
+	push_a 6
+	jsr_eval 0
+	pushR_a 7
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushR_a 3
+	pop_a 1
+	pop_a 8
+	ltR
+.d 0 1 b
+	rtn
+.o 4 0
+s14
+	jsr_eval 1
+	push_args 1 5 5
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	update_a 0 4
+	pop_a 4
+	jsr_eval 0
+	updatepop_a 0 4
+	push_array 0
+	updatepop_a 0 1
+.d 1 0
+	rtn
+.desc d18 _hnf l18 1 0 "<lambda>[line:64];62;17"
+.o 2 0
+l18
+	pop_a 1
+.d 1 0
+	jsr ea18
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea18
+	jsr_eval 0
+	repl_r_args 4 0
+.o 4 0
+s18
+	jsr_eval 1
+	push_args 1 5 5
+	buildh _Nil 0
+	update_a 0 7
+	pop_a 1
+	pop_a 4
+	push_a 0
+	jsr_eval 0
+	pushB_a 1
+	pop_a 1
+	pushB TRUE
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	eqB
+	pop_a 5
+	notB
+.d 0 1 b
+	rtn
+.n 0 _
+.o 1 0
+n9
+	push_node _cycle_in_spine 0
+.o 0 0
+ea9
+	buildh d50 0
+	buildI 11
+	buildI 2019
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	build_r r25 3 0 0 0
+	updatepop_a 0 3
+	build _ 0 n4
+	buildR 35.0
+	buildI 3
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	fill_r r35 4 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n8
+	push_node _cycle_in_spine 0
+.o 0 0
+ea8
+	buildh d44 0
+	buildI 12
+	buildI 2010
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	build_r r25 3 0 0 0
+	updatepop_a 0 3
+	build _ 0 n1
+	buildR 123.45
+	buildI 2
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	fill_r r35 4 0 4 0 0
+	pop_a 4
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n4
+	push_node _cycle_in_spine 0
+.o 0 0
+ea4
+	buildh d41 0
+	buildI 11
+	buildI 1999
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	build_r r25 3 0 0 0
+	updatepop_a 0 3
+	buildh d52 0
+	buildB FALSE
+	buildI 20
+	buildAC "Zuka"
+	buildh ARRAY 1
+	push_a 4
+	update_a 3 5
+	update_a 2 3
+	update_a 4 2
+	update_a 0 4
+	pop_a 1
+	fill_r r29 5 0 5 0 0
+	pop_a 5
+.d 1 0
+	rtn
+.n 0 _
+.o 1 0
+n1
+	push_node _cycle_in_spine 0
+.o 0 0
+ea1
+	buildh d44 0
+	buildI 12
+	buildI 1977
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	build_r r25 3 0 0 0
+	updatepop_a 0 3
+	buildh d53 0
+	buildB FALSE
+	buildI 42
+	buildAC "Tringa"
+	buildh ARRAY 1
+	push_a 4
+	update_a 3 5
+	update_a 2 3
+	update_a 4 2
+	update_a 0 4
+	pop_a 1
+	fill_r r29 5 0 5 0 0
+	pop_a 5
+.d 1 0
+	rtn
+.impmod _system
+.implab _match_error

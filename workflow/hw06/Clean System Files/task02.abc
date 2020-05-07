@@ -1,0 +1,573 @@
+.comp 920 0101110100100
+.start __task02_Start
+.depend "_SystemEnumStrict"
+.depend "_SystemStrictLists"
+.depend "StdStrictLists"
+.depend "_SystemEnum"
+.depend "StdEnum"
+.depend "StdMisc"
+.depend "StdFunctions"
+.depend "StdCharList"
+.depend "StdTuple"
+.depend "StdOrdList"
+.depend "StdList"
+.depend "StdClass"
+.depend "StdFile"
+.depend "StdString"
+.depend "_SystemArray"
+.depend "StdArray"
+.depend "StdChar"
+.depend "StdReal"
+.depend "StdInt"
+.depend "StdOverloaded"
+.depend "StdBool"
+.depend "StdEnv"
+.endinfo
+.module m_task02 "task02"
+.impmod _system
+.implab _cycle_in_spine
+.implab _type_error
+.implab _hnf
+.impdesc e_system_dind
+.implab e_system_nind e_system_eaind
+.impdesc e_system_dif
+.implab e_system_nif e_system_eaif
+.implab e_system_sif
+.impdesc e_system_dAP
+.implab e_system_nAP e_system_eaAP
+.implab e_system_sAP
+.impdesc ARRAY
+.impdesc _Nil
+.impdesc _Cons
+.impdesc _Conss
+.implab n_Conss ea_Conss
+.impdesc _Consts
+.implab n_Consts ea_Consts
+.impdesc _Conssts
+.implab n_Conssts ea_Conssts
+.impdesc _Tuple
+.impdesc d_S.1
+.implab n_S.1 ea_S.1
+.impdesc d_S.2
+.implab n_S.2 ea_S.2
+.impdesc d_S.3
+.implab n_S.3 ea_S.3
+.impdesc d_S.4
+.implab n_S.4 ea_S.4
+.impdesc d_S.5
+.implab n_S.5 ea_S.5
+.impdesc d_S.6
+.implab n_S.6 ea_S.6
+.implab _driver
+.impmod StdList
+.impdesc e_StdList_d++
+.implab e_StdList_s++
+.implab e_StdList_n++ e_StdList_ea++
+.implab e_StdList_shd
+.implab e_StdList_sfilter
+.implab e_StdList_smap
+.impmod StdString
+.implab e_StdString_s==;2
+.impmod StdInt
+.implab e_StdInt_s<;17
+.impmod StdBool
+.implab e_StdBool_snot
+.export __task02_Start
+.o 0 0
+__task02_Start
+	build _ 0 n7
+.d 1 0
+	jmp _driver
+.n 0 _ ea7
+.o 1 0
+n7
+	push_node _cycle_in_spine 0
+.o 1 0
+ea7
+.o 1 0
+s7
+	buildh _Nil 0
+	buildAC "female"
+	buildh ARRAY 1
+	buildI 18
+	buildAC "Nani"
+	buildh ARRAY 1
+	buildh _Tuple 3
+	buildh _Cons 2
+	buildAC "female"
+	buildh ARRAY 1
+	buildI 18
+	buildAC "Tringa"
+	buildh ARRAY 1
+	buildh _Tuple 3
+	buildh _Cons 2
+	buildAC "male"
+	buildh ARRAY 1
+	buildI 21
+	buildAC "Nikola"
+	buildh ARRAY 1
+	buildh _Tuple 3
+	buildh _Cons 2
+	buildAC "male"
+	buildh ARRAY 1
+	buildI 21
+	buildAC "Hossam"
+	buildh ARRAY 1
+	buildh _Tuple 3
+	buildh _Cons 2
+.d 2 0
+	jmp s6
+.o 2 0
+s6
+	buildh _Nil 0
+	push_a 1
+	build _ 1 n4
+	buildh _Cons 2
+	buildh _Nil 0
+	push_a 2
+	build _ 1 n5
+	buildh _Cons 2
+	update_a 1 2
+	updatepop_a 0 1
+.d 3 0
+	jmp e_StdList_s++
+.n 1 _
+.o 1 0
+n5
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea5
+.o 1 0
+	fillh ARRAY 1 1
+.d 1 0
+	rtn
+.o 1 0
+ea5
+.o 1 0
+s5
+	eq_desc _Cons 2 0
+	jmp_true case.1
+	jmp s5.1
+case.1
+	push_args 0 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	repl_args 3 3
+	pop_a 3
+	create
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s1
+.o 1 0
+	buildh d13 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdList_sfilter
+.o 1 0
+	buildh d12 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdList_smap
+.o 1 0
+.d 1 0
+	jsr e_StdList_shd
+.o 1 0
+	push_array 0
+	updatepop_a 0 1
+.d 1 0
+	rtn
+s5.1
+	pop_a 1
+	pushD m_task02
+	pushD x_5
+.d 0 2 ii
+	jmp _match_error
+.string x_5 "findMan"
+.desc d12 _hnf l12 1 0 "<lambda>[line:26];41;11"
+.o 2 0
+l12
+	pop_a 1
+.o 1 0
+ea12
+	jsr_eval 0
+	repl_args 3 3
+	jsr_eval 0
+.o 3 0
+s12
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.desc d13 _hnf l13 1 0 "<lambda>[line:26];68;12"
+.o 2 0
+l13
+	pop_a 1
+.d 1 0
+	jsr ea13
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea13
+	jsr_eval 0
+	repl_args 3 3
+	jsr_eval 2
+	push_array 2
+	update_a 0 3
+	pop_a 1
+.o 3 0
+s13
+	buildAC "male"
+	push_a 3
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+.d 0 1 b
+	rtn
+.n 1 _
+.o 1 0
+n4
+	push_node _cycle_in_spine 1
+.d 1 0
+	jsr ea4
+.o 1 0
+	fillh ARRAY 1 1
+.d 1 0
+	rtn
+.o 1 0
+ea4
+.o 1 0
+s4
+	eq_desc _Cons 2 0
+	jmp_true case.2
+	jmp s4.1
+case.2
+	push_args 0 2 2
+	update_a 0 1
+	pop_a 1
+	jsr_eval 0
+	repl_args 3 3
+	pop_a 3
+	create
+	push_a 1
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	jsr s1
+.o 1 0
+	buildh d11 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdList_sfilter
+.o 1 0
+	buildh d10 0
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr e_StdList_smap
+.o 1 0
+.d 1 0
+	jsr e_StdList_shd
+.o 1 0
+	push_array 0
+	updatepop_a 0 1
+.d 1 0
+	rtn
+s4.1
+	pop_a 1
+	pushD m_task02
+	pushD x_4
+.d 0 2 ii
+	jmp _match_error
+.string x_4 "findWoman"
+.desc d10 _hnf l10 1 0 "<lambda>[line:22];43;9"
+.o 2 0
+l10
+	pop_a 1
+.o 1 0
+ea10
+	jsr_eval 0
+	repl_args 3 3
+	jsr_eval 0
+.o 3 0
+s10
+	updatepop_a 0 2
+.d 1 0
+	rtn
+.desc d11 _hnf l11 1 0 "<lambda>[line:22];70;10"
+.o 2 0
+l11
+	pop_a 1
+.d 1 0
+	jsr ea11
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 1 0
+ea11
+	jsr_eval 0
+	repl_args 3 3
+	jsr_eval 2
+	push_array 2
+	update_a 0 3
+	pop_a 1
+.o 3 0
+s11
+	buildAC "female"
+	push_a 3
+	update_a 1 4
+	updatepop_a 0 3
+.d 2 0
+	jsr eqAC
+.o 0 1 b	
+.d 0 1 b
+	rtn
+.n 1 _ ea1
+.o 1 0
+n1
+	push_node _cycle_in_spine 1
+.o 2 0
+ea1
+	jsr_eval 0
+.o 2 0
+s1
+	eq_desc _Nil 0 0
+	jmp_true case.3
+	jmp case.4
+case.3
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.4
+	repl_args 2 2
+	jsr_eval 0
+	repl_args 3 3
+	push_a 3
+	push_a 2
+	build _ 2 n15
+	build _ 1 n1
+	buildh _Nil 0
+	push_a 4
+	push_a 4
+	push_a 4
+	buildh _Tuple 3
+	buildh _Cons 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 4
+	jsr_eval 0
+	create
+	push_a 4
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 6
+	update_a 0 8
+	update_a 0 5
+	update_a 0 7
+	pop_a 1
+.d 3 0
+	jsr s14
+.o 1 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr s1
+.o 1 0
+	update_a 1 5
+	updatepop_a 0 4
+.d 3 0
+	jmp e_StdList_s++
+.n 2 _ ea14
+.o 1 0
+n14
+	push_node _cycle_in_spine 2
+.o 3 0
+ea14
+	jsr_eval 1
+.o 3 0
+s14
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s23
+.o 3 0
+s23
+	eq_desc _Cons 2 0
+	jmp_true case.5
+	jmp case.6
+case.5
+	repl_args 2 2
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	repl_args 3 3
+	jsr_eval 1
+	pushI_a 1
+	update_a 0 1
+	pop_a 1
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 2 ii
+	jmp s22
+case.6
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+.o 4 2 ii
+s22
+case.7
+	push_b 1
+	push_b 1
+	ltI
+	jmp_false else.9
+	push_a 2
+	buildI_b 1
+	build _ 2 n14
+	push_a 2
+	buildI_b 0
+	push_a 3
+	buildh _Tuple 3
+	fillh _Cons 2 5
+	pop_a 3
+	pop_b 2
+.d 1 0
+	rtn
+else.9
+	jmp case.8
+case.8
+	push_a 2
+	jsr_eval 0
+	buildI_b 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 2
+.d 3 0
+	jmp s14
+.n 2 _ ea15
+.o 1 0
+n15
+	push_node _cycle_in_spine 2
+.o 3 0
+ea15
+	jsr_eval 1
+.o 3 0
+s15
+	push_a 0
+	push_a 2
+	update_a 1 3
+	updatepop_a 0 2
+.d 3 0
+	jmp s21
+.o 3 0
+s21
+	eq_desc _Cons 2 0
+	jmp_true case.10
+	jmp case.11
+case.10
+	repl_args 2 2
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	repl_args 3 3
+	jsr_eval 1
+	pushI_a 1
+	update_a 0 1
+	pop_a 1
+	push_a 3
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	update_a 2 5
+	update_a 1 4
+	updatepop_a 0 3
+.d 4 2 ii
+	jmp s20
+case.11
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+.o 4 2 ii
+s20
+case.12
+	push_b 1
+	push_b 1
+	ltI
+	notB
+	jmp_false else.14
+	push_a 2
+	buildI_b 1
+	build _ 2 n15
+	push_a 2
+	buildI_b 0
+	push_a 3
+	buildh _Tuple 3
+	fillh _Cons 2 5
+	pop_a 3
+	pop_b 2
+.d 1 0
+	rtn
+else.14
+	jmp case.13
+case.13
+	push_a 2
+	jsr_eval 0
+	buildI_b 1
+	update_a 1 4
+	updatepop_a 0 3
+	pop_b 2
+.d 3 0
+	jmp s15
+.impmod _system
+.implab _match_error

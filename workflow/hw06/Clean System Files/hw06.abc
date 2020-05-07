@@ -1,5 +1,5 @@
 .comp 920 0101110100100
-.start __prep03_Start
+.start __hw06_Start
 .depend "_SystemEnumStrict"
 .depend "_SystemStrictLists"
 .depend "StdStrictLists"
@@ -23,7 +23,7 @@
 .depend "StdBool"
 .depend "StdEnv"
 .endinfo
-.module m_prep03 "prep03"
+.module m_hw06 "hw06"
 .impmod _system
 .implab _cycle_in_spine
 .implab _type_error
@@ -60,79 +60,175 @@
 .implab n_S.6 ea_S.6
 .implab _driver
 .impmod StdList
-.implab e_StdList_sisEmpty
+.implab e_StdList_sfilter
 .impmod StdInt
 .implab e_StdInt_s+;6
+.implab e_StdInt_s-;7
 .implab e_StdInt_sone;11
 .implab e_StdInt_s==;16
 .implab e_StdInt_s<;17
-.implab e_StdInt_srem;28
 .impmod StdBool
 .implab e_StdBool_snot
-.export __prep03_Start
+.export __hw06_Start
 .o 0 0
-__prep03_Start
-	build _ 0 n19
+__hw06_Start
+	build _ 0 n16
 .d 1 0
 	jmp _driver
-.n 0 _ ea19
+.n 0 _
 .o 1 0
-n19
+n16
 	push_node _cycle_in_spine 0
+.d 0 0
+	jsr ea16
+.o 2 0
+	push_a 1
+	push_a 1
+	fillh _Tuple 2 4
+	pop_a 2
+.d 1 0
+	rtn
+.o 0 0
+ea16
+.o 0 0
+s16
+	pushI 666
+.d 0 1 i
+	jmp s14
+.o 0 1 i
+s14
+	create
+	push_b 0
+.d 1 1 i
+	jsr s13
 .o 1 0
-ea19
+	buildI_b 0
+	buildh d31 1
+	create
+	push_a 2
+	update_a 1 3
+	update_a 2 1
+	update_a 0 2
+	pop_a 1
+	pop_b 1
+.d 3 0
+	jsr e_StdList_sfilter
 .o 1 0
-s19
-	pushI 10
-	pushI 1
-.d 1 2 ii
-	jmp s37
+.d 1 0
+	jmp s15
+.desc d31 _hnf l31 2 0 "<lambda>[line:110];42;30"
+.a 0 a31
+.o 2 0
+l31
+	repl_args 1 1
+.o 2 0
+a31
+.d 2 0
+	jsr ea31
+.o 0 1 b
+	buildB_b 0
+	pop_b 1
+.d 1 0
+	rtn
+.o 2 0
+ea31
+	push_a 1
+	jsr_eval 0
+	repl_args 2 2
+	jsr_eval 0
+	pushI_a 0
+	pushI_a 2
+	update_a 1 3
+	pop_a 3
 .o 1 2 ii
-s37
+s31
+	push_b 0
+	push_b 2
+	update_b 1 3
+	updatepop_b 0 2
+	pop_a 1
+	eqI
+.d 0 1 b
+	rtn
+.o 1 0
+s15
+	eq_desc _Nil 0 0
+	jmp_true case.1
+	jmp case.2
+case.1
+	buildI -1
+	buildB FALSE
+	update_a 1 2
+	updatepop_a 0 1
+.d 2 0
+	rtn
+case.2
+	repl_args 2 2
+	jsr_eval 0
+	repl_args 2 2
+	pop_a 1
+	jsr_eval 1
+	eq_desc _Nil 0 1
+	jmp_true case.3
+	pop_a 1
+	jmp s15.1
+case.3
+	push_a 0
+	buildB TRUE
+	update_a 1 3
+	updatepop_a 0 2
+.d 2 0
+	rtn
+s15.1
+	pop_a 1
+	pushD m_hw06
+	pushD x_15
+.d 0 2 ii
+	jmp _match_error
+.string x_15 "triangleRes"
+.o 1 1 i
+s13
+	push_b 0
+	pushI 1
+	update_b 1 2
+	updatepop_b 0 1
+.d 1 2 ii
+	jmp s26
+.o 1 2 ii
+s26
 	push_b 0
 	push_b 2
 	ltI
 	notB
-	jmp_false else.1
+	jmp_false else.4
+	push_b 1
+	push_b 1
+	build_u _ 0 2 n42
 	push_b 0
-.d 0 1 i
-	jsr s18
-.o 0 1 b
-	jmp_false else.2
-	push_b 1
-	push_b 1
-	build_u _ 0 2 n93
+	build_u _ 0 1 n12
 	buildI_b 0
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Tuple 2
 	fillh _Cons 2 2
 	pop_b 2
 .d 1 0
 	rtn
-else.2
-	pushI 1
-	push_b 1
-	addI
-	push_b 2
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	update_b 1 3
-	updatepop_b 0 2
-.d 1 2 ii
-	jmp s37
-else.1
+else.4
 	fillh _Nil 0 0
 	pop_b 2
 .d 1 0
 	rtn
 .nu 0 2 _ _
 .o 1 0
-n93
+n42
 	push_node_u _cycle_in_spine 0 2
 .o 1 2 ii
-ea93
+ea42
 .o 1 2 ii
-s93
+s42
 	pushI 1
 	push_b 1
 	addI
@@ -144,100 +240,42 @@ s93
 	update_b 1 3
 	updatepop_b 0 2
 .d 1 2 ii
-	jmp s37
+	jmp s26
+.nu 0 1 _
+.o 1 0
+n12
+	push_node_u _cycle_in_spine 0 1
+.d 0 1 i
+	jsr ea12
 .o 0 1 i
-s18
-	push_b 0
-	pushI 1
-	ltI
-	notB
-	jmp_false else.3
+	fillI_b 0 0
 	pop_b 1
-	pushB FALSE
-.d 0 1 b
+.d 1 0
 	rtn
-else.3
-	create
-	push_b 0
+.o 0 1 i
+ea12
+.o 0 1 i
+s12
+	eqI_b 0 0
+	jmp_true case.5
+	jmp case.6
+case.5
+	pop_b 1
+	pushI 0
+.d 0 1 i
+	rtn
+case.6
 	pushI 1
-	buildI_b 2
+	push_b 1
+	subI
+.d 0 1 i
+	jsr s12
+.o 0 1 i
+	push_b 1
 	update_b 1 2
 	updatepop_b 0 1
-.d 2 2 ii
-	jsr s75
-.o 1 0
-.d 1 0
-	jmp e_StdList_sisEmpty
-.o 2 2 ii
-s75
-	push_b 0
-	push_b 2
-	ltI
-	notB
-	jmp_false else.4
-	push_a 0
-	jsr_eval 0
-	pushI_a 1
-	pop_a 1
-	pushI_a 0
-	remI
-	pushI 0
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	eqI
-	jmp_false else.5
-	push_b 1
-	push_b 1
-	push_a 0
-	build_u _ 1 2 n94
-	buildI_b 0
-	fillh _Cons 2 3
-	pop_a 1
-	pop_b 2
-.d 1 0
-	rtn
-else.5
-	pushI 1
-	push_b 1
 	addI
-	push_b 2
-	push_a 0
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	updatepop_a 0 1
-	update_b 1 3
-	updatepop_b 0 2
-.d 2 2 ii
-	jmp s75
-else.4
-	fillh _Nil 0 1
-	pop_a 1
-	pop_b 2
-.d 1 0
+.d 0 1 i
 	rtn
-.nu 1 2 _ _
-.o 1 0
-n94
-	push_node_u _cycle_in_spine 1 2
-.o 2 2 ii
-ea94
-.o 2 2 ii
-s94
-	pushI 1
-	push_b 1
-	addI
-	push_b 2
-	push_a 0
-	push_b 1
-	update_b 1 2
-	update_b 0 1
-	pop_b 1
-	updatepop_a 0 1
-	update_b 1 3
-	updatepop_b 0 2
-.d 2 2 ii
-	jmp s75
+.impmod _system
+.implab _match_error
