@@ -138,6 +138,9 @@ newTree :: Tree Int
 newTree =  Node 4 (Node 2 (Node 1 Leaf Leaf) (Node 3 Leaf Leaf)) (Node 8 (Node 5 Leaf Leaf) (Node 9 Leaf Leaf)) 
 
 
+newTree1 :: Tree Int 
+newTree1 = Node 6 (Node 3 (Node 2 Leaf Leaf) (Node 5 Leaf Leaf)) (Node 20 (Node -1 Leaf Leaf) (Node 22 Leaf Leaf))
+
 unbalancedTree:: Tree Int
 unbalancedTree = Node 5 (Node 2 Leaf Leaf) Leaf
 
@@ -181,7 +184,10 @@ isBalanced (Node x l r)
 // 4. Check if a binary tree is ordered (i.e. has the property of a binary search tree 
 // with smaller elements then root to left and bigger elements to left)
 
-treeToList:: (Tree a) -> [a] | Ord, Eq a
+leafTree:: (Tree Int)
+leafTree = Leaf
+
+treeToList:: (Tree a) -> [a] 
 treeToList Leaf = []
 treeToList (Node x l r) = (treeToList l) ++ [x] ++ (treeToList r)
 
@@ -193,7 +199,7 @@ isOrdered tree = (treeToList tree) == sort (treeToList tree)
 // where 
   // (==) [] [] = [] == []
 
-Start = isOrdered Leaf
+// Start = isOrdered leafTree
 
 // 5. listDescending: returns the elements in descending order of magnitude, starting at
 // the greatest element.
@@ -224,8 +230,44 @@ listDescending (Node x l r) = (listDescending r) ++ [x] ++ (listDescending l)
 
 // Start = listToLeaves newTree
 // Start = listToLeaves newTree
-// instance + [a]
-// where
-  // (+) [x:xs] [y:ys] = [sum (x y), (+) xs ys] 
+instance zero [a] | PlusMin a
+where
+  zero = []
 
-// Start = [1,2] + [4,5]
+instance + [a] | PlusMin a
+where
+  (+) [x:xs] [y:ys] = [(x + y): (xs + ys)] 
+  (+) [] [y:ys] = [y:ys]
+  (+) [x:xs] [] = [x: xs]
+  (+) [] [] = []
+
+instance - [a] | PlusMin a 
+where 
+  (-) [x:xs] [y:ys] = [(x-y): (xs - ys)]
+  (-) [] [y:ys] = [y:ys]
+  (-) [x:xs] [] = [x:xs]
+  (-) [] [] = []
+
+instance + (Tree a) | PlusMin a 
+where 
+  (+) (Node x1 l1 r1) (Node x2 l2 r2) =  Node (x1+x2) (l1+l2) (r1+r2)
+  (+) (Node x1 l1 r1) Leaf = (Node x1 l1 r1)
+  (+) Leaf (Node x2 l2 r2) = (Node x2 l2 r2)
+  (+) Leaf Leaf = Leaf
+
+
+instance - (Tree a) | PlusMin a 
+where 
+  (-) (Node x1 l1 r1) (Node x2 l2 r2) =  Node (x1-x2) (l1-l2) (r1-r2)
+  (-) (Node x1 l1 r1) Leaf = (Node x1 l1 r1)
+  (-) Leaf (Node x2 l2 r2) = (Node x2 l2 r2)
+  (-) Leaf Leaf = Leaf
+// Start = [1,2] + [4,5,8]
+// Start:: [Int]
+// Start = zero
+// Start:: [Int]
+// Start = [zero,1]
+
+// Start = [3,4,5] - [1..3]
+
+Start = newTree - newTree1
