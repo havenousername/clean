@@ -45,8 +45,8 @@ instance fromReal C
 where 
     fromReal r = mkC r 0.0
     
-//Start :: C
-//Start = fromReal 3.0 // (C 3 0)
+// Start :: C
+// Start = fromReal 3.0 // (C 3 0)
 
 
 instance toReal C
@@ -55,23 +55,23 @@ where
     | x.im == 0.0 = x.re
     = abort "x has imaginary part"
     
-//Start = toReal (mkC 3.0 0.0) // 3
+// Start = toReal (mkC 3.0 0.0) // 3
 
 
 instance zero C
 where 
     zero = fromReal 0.0
 
-//Start :: C   
-//Start = zero // (C 0 0)
+// Start :: C   
+// Start = zero // (C 0 0)
 
 
 instance one C
 where 
     one = fromReal 1.0
 
-//Start :: C   
-//Start = one // (C 1 0)
+// Start :: C   
+// Start = one // (C 1 0)
 
 
 instance abs C
@@ -270,4 +270,4 @@ where
 
 // Start = [3,4,5] - [1..3]
 
-Start = newTree - newTree1
+// Start = newTree - newTree1

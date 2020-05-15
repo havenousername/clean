@@ -1,5 +1,5 @@
 .comp 920 0101110100100
-.start __ex21_Start
+.start __progress_task08_Start
 .depend "_SystemEnumStrict"
 .depend "_SystemStrictLists"
 .depend "StdStrictLists"
@@ -23,7 +23,7 @@
 .depend "StdBool"
 .depend "StdEnv"
 .endinfo
-.module m_ex21 "ex21"
+.module m_progress_task08 "progress_task08"
 .impmod _system
 .implab _cycle_in_spine
 .implab _type_error
@@ -59,12 +59,13 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.record r39 aa 2 0 "C"
-.desc d43 _hnf _add_arg 3 0 "Node"
-.desc d44 _hnf _hnf 0 0 "Leaf"
-.export __ex21_Start
+.impmod StdInt
+.implab e_StdInt_s*;9
+.implab e_StdInt_s==;16
+.record r6 aa 2 0 "Q"
+.export __progress_task08_Start
 .o 0 0
-__ex21_Start
+__progress_task08_Start
 	build _ 0 n2
 .d 1 0
 	jmp _driver
@@ -74,35 +75,56 @@ n2
 	push_node _cycle_in_spine 0
 .d 0 0
 	jsr ea2
-.o 2 0
-	fill_r r39 2 0 2 0 0
-	pop_a 2
+.o 0 1 b
+	fillB_b 0 0
+	pop_b 1
 .d 1 0
 	rtn
 .o 0 0
 ea2
 .o 0 0
 s2
-.d 0 0
-	jmp s27
-.o 0 0
-s27
-	pushR 1.0
-.d 0 1 r
-	jmp s24
-.o 0 1 r
-s24
-	buildR 0.0
-	push_b 0
-	updatepop_b 0 1
-.d 1 1 r
-	jmp s1
-.o 1 1 r
-s1
+	buildI 12
+	buildI 3
+.d 2 0
+	jsr s1
+.o 2 0
+	buildI 2
+	buildI 1
+.d 2 0
+	jsr s1
+.o 2 0
+.d 4 0
+	jmp s3
+.o 4 0
+s3
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	mulI
+	push_a 3
+	jsr_eval 0
+	pushI_a 4
+	pop_a 1
 	push_a 0
-	buildR_b 0
-	update_a 1 2
-	updatepop_a 0 1
-	pop_b 1
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	mulI
+	pop_a 4
+	eqI
+.d 0 1 b
+	rtn
+.o 2 0
+s1
+	push_a 1
+	push_a 1
+	update_a 1 3
+	updatepop_a 0 2
 .d 2 0
 	rtn

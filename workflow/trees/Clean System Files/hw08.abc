@@ -1,5 +1,5 @@
 .comp 920 0101110100100
-.start __ex21_Start
+.start __hw08_Start
 .depend "_SystemEnumStrict"
 .depend "_SystemStrictLists"
 .depend "StdStrictLists"
@@ -23,7 +23,7 @@
 .depend "StdBool"
 .depend "StdEnv"
 .endinfo
-.module m_ex21 "ex21"
+.module m_hw08 "hw08"
 .impmod _system
 .implab _cycle_in_spine
 .implab _type_error
@@ -59,12 +59,11 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
-.record r39 aa 2 0 "C"
-.desc d43 _hnf _add_arg 3 0 "Node"
-.desc d44 _hnf _hnf 0 0 "Leaf"
-.export __ex21_Start
+.desc d6 _hnf _add_arg 3 0 "Node"
+.desc d7 _hnf _hnf 0 0 "Leaf"
+.export __hw08_Start
 .o 0 0
-__ex21_Start
+__hw08_Start
 	build _ 0 n2
 .d 1 0
 	jmp _driver
@@ -74,35 +73,64 @@ n2
 	push_node _cycle_in_spine 0
 .d 0 0
 	jsr ea2
-.o 2 0
-	fill_r r39 2 0 2 0 0
-	pop_a 2
+.o 0 1 i
+	fillI_b 0 0
+	pop_b 1
 .d 1 0
 	rtn
 .o 0 0
 ea2
 .o 0 0
 s2
-.d 0 0
-	jmp s27
-.o 0 0
-s27
-	pushR 1.0
-.d 0 1 r
-	jmp s24
-.o 0 1 r
-s24
-	buildR 0.0
-	push_b 0
-	updatepop_b 0 1
-.d 1 1 r
+	buildh d7 0
+	buildh d7 0
+	buildh d7 0
+	buildI 5
+	buildh d6 3
+	buildh d7 0
+	buildh d7 0
+	buildI 4
+	buildh d6 3
+	buildh d7 0
+	buildI 1
+	buildh d6 3
+	buildI 2
+	buildh d6 3
+	buildI 3
+	buildh d6 3
+.d 1 0
 	jmp s1
-.o 1 1 r
+.o 1 0
 s1
-	push_a 0
-	buildR_b 0
+	eq_desc d6 3 0
+	jmp_true case.1
+	jmp s1.1
+case.1
+	repl_args 3 3
 	update_a 1 2
-	updatepop_a 0 1
-	pop_b 1
-.d 2 0
+	update_a 0 1
+	pop_a 1
+	jsr_eval 1
+	eq_desc d7 0 1
+	jmp_true case.2
+	jmp case.3
+case.2
+	jsr_eval 0
+	pushI_a 0
+	pop_a 2
+.d 0 1 i
 	rtn
+case.3
+	push_a 1
+	updatepop_a 0 2
+.d 1 0
+	jmp s1
+s1.1
+	pop_a 1
+	pushD m_hw08
+	pushD x_1
+.d 0 2 ii
+	jmp _match_error
+.string x_1 "func"
+.impmod _system
+.implab _match_error
