@@ -59,64 +59,287 @@
 .impdesc d_S.6
 .implab n_S.6 ea_S.6
 .implab _driver
+.impmod StdOrdList
+.impdesc e_StdOrdList_dsort;9
+.implab e_StdOrdList_nsort;9 e_StdOrdList_easort;9
+.impmod StdList
+.impdesc e_StdList_d!!
+.implab e_StdList_n!! _
+.impdesc e_StdList_d++
+.implab e_StdList_s++
+.implab e_StdList_n++ e_StdList_ea++
+.implab e_StdList_sisEmpty
+.impdesc e_StdList_dtake
+.implab e_StdList_ntake e_StdList_eatake
+.implab e_StdList_sdrop
+.impdesc e_StdList_dlength;47
+.implab e_StdList_nlength;47
+.impdesc e_StdList_dremoveDup;63
+.implab e_StdList_nremoveDup;63 e_StdList_earemoveDup;63
 .impmod StdInt
-.impdesc e_StdInt_done;11
-.implab e_StdInt_none;11
-.record r122 aaa 3 0 "Point"
-.record r126 aa 2 0 "Vector"
-.desc d146 _hnf _add_arg 3 0 "Node"
-.desc d147 _hnf _hnf 0 0 "Leaf"
-.desc0 d148 0 "Mon"
-.desc0 d149 1 "Tue"
-.desc0 d150 2 "Wed"
-.desc0 d151 3 "Thu"
-.desc0 d152 4 "Fri"
-.desc0 d153 5 "Sat"
-.desc0 d154 6 "Sun"
-.record r131 aaa 3 0 "Person"
-.desc d155 _hnf _add_arg 3 0 "Node2"
-.desc d156 _hnf _add_arg 1 0 "Leaf2"
-.desc d157 _hnf _add_arg 3 0 "Node3"
-.desc d158 _hnf _add_arg 1 0 "Leaf3"
-.desc d159 _hnf _add_arg 4 0 "Node4"
-.desc d160 _hnf _hnf 0 0 "Leaf4"
-.desc d161 _hnf _add_arg 2 0 "Node5"
-.desc d162 _hnf _add_arg 2 0 "Node6"
-.desc d163 _hnf _hnf 0 0 "Leaf6"
-.desc d164 _hnf _add_arg 3 0 "Node7a"
-.desc d165 _hnf _add_arg 2 0 "Node7b"
-.desc d166 _hnf _add_arg 1 0 "Leaf7a"
-.desc d167 _hnf _add_arg 1 0 "Leaf7b"
-.desc d168 _hnf _add_arg 2 0 "Bin"
-.desc d169 _hnf _add_arg 1 0 "Tip"
-.record r142 aaa 3 0 "Vector3"
+.implab e_StdInt_s+;6
+.implab e_StdInt_s==;16
+.record r131 aaa 3 0 "Point"
+.record r135 aa 2 0 "Vector"
+.desc d155 _hnf _add_arg 3 0 "Node"
+.desc d156 _hnf _hnf 0 0 "Leaf"
+.desc0 d157 0 "Mon"
+.desc0 d158 1 "Tue"
+.desc0 d159 2 "Wed"
+.desc0 d160 3 "Thu"
+.desc0 d161 4 "Fri"
+.desc0 d162 5 "Sat"
+.desc0 d163 6 "Sun"
+.record r140 aaa 3 0 "Person"
+.desc d164 _hnf _add_arg 3 0 "Node2"
+.desc d165 _hnf _add_arg 1 0 "Leaf2"
+.desc d166 _hnf _add_arg 3 0 "Node3"
+.desc d167 _hnf _add_arg 1 0 "Leaf3"
+.desc d168 _hnf _add_arg 4 0 "Node4"
+.desc d169 _hnf _hnf 0 0 "Leaf4"
+.desc d170 _hnf _add_arg 2 0 "Node5"
+.desc d171 _hnf _add_arg 2 0 "Node6"
+.desc d172 _hnf _hnf 0 0 "Leaf6"
+.desc d173 _hnf _add_arg 3 0 "Node7a"
+.desc d174 _hnf _add_arg 2 0 "Node7b"
+.desc d175 _hnf _add_arg 1 0 "Leaf7a"
+.desc d176 _hnf _add_arg 1 0 "Leaf7b"
+.desc d177 _hnf _add_arg 2 0 "Bin"
+.desc d178 _hnf _add_arg 1 0 "Tip"
+.record r151 aaa 3 0 "Vector3"
 .export __e3_Start
 .o 0 0
 __e3_Start
-	build _ 0 n56
+	build _ 0 n62
 .d 1 0
 	jmp _driver
-.n 0 _
+.n 0 _ ea62
 .o 1 0
-n56
+n62
 	push_node _cycle_in_spine 0
-.d 0 0
-	jsr ea56
-.o 3 0
-	fill_r r142 3 0 3 0 0
+.o 1 0
+ea62
+.o 1 0
+s62
+	create
+.d 1 0
+	jsr s55
+.o 1 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+.d 2 0
+	jsr s58
+.o 1 0
+	create
+	buildI 8
+	push_a 2
+	update_a 2 3
+	update_a 0 2
+	pop_a 1
+.d 3 0
+	jsr s108
+.o 1 0
+.d 2 0
+	jmp s110
+.n 1 _ ea110
+.o 1 0
+n110
+	push_node _cycle_in_spine 1
+.o 2 0
+ea110
+	jsr_eval 0
+.o 2 0
+s110
+	push_a 0
+.d 1 0
+	jsr e_StdList_sisEmpty
+.o 0 1 b
+	jmp_false else.1
+	fillh d156 0 1
+	pop_a 1
+.d 1 0
+	rtn
+else.1
+	push_a 0
+	build e_StdList_dremoveDup;63 1 e_StdList_nremoveDup;63
+	build e_StdOrdList_dsort;9 1 e_StdOrdList_nsort;9
+	push_a 0
+	build e_StdList_dlength;47 1 e_StdList_nlength;47
+	push_a 1
+	push_a 1
+	build _ 2 n179
+	build _ 1 n110
+	push_a 2
+	push_a 2
+	build e_StdList_dtake 2 e_StdList_ntake
+	build _ 1 n110
+	push_a 2
+	push_a 4
+	build e_StdList_d!! 2 e_StdList_n!!
+	fillh d155 3 6
 	pop_a 3
 .d 1 0
 	rtn
-.o 0 0
-ea56
-.o 0 0
-s56
-.d 0 0
-	jmp s101
-.o 0 0
-s101
-	build _ 0 e_StdInt_none;11
-	build _ 0 e_StdInt_none;11
-	build _ 0 e_StdInt_none;11
+.n 2 _ ea179
+.o 1 0
+n179
+	push_node _cycle_in_spine 2
+.o 3 0
+ea179
+.o 3 0
+s179
+	push_a 1
+	jsr_eval 0
+	push_a 1
+	jsr_eval 0
+	pushI_a 2
+	pop_a 1
+	pushI 1
+	push_b 1
+	update_b 1 2
+	update_b 0 1
+	pop_b 1
+	addI
+	updatepop_a 0 2
+.d 2 1 i
+	jmp e_StdList_sdrop
+.n 2 _ ea108
+.o 1 0
+n108
+	push_node _cycle_in_spine 2
+.o 3 0
+ea108
+	jsr_eval 1
+.o 3 0
+s108
+	eq_desc _Nil 0 1
+	jmp_true case.2
+	jmp case.3
+case.2
+	fillh _Nil 0 2
+	pop_a 2
+.d 1 0
+	rtn
+case.3
+	push_args 1 2 2
+	buildh _Nil 0
+	update_a 0 4
+	pop_a 1
+	push_a 0
+	jsr_eval 0
+	pushI_a 1
+	pop_a 1
+	push_a 2
+	jsr_eval 0
+	pushI_a 3
+	pop_a 1
+	eqI
+	jmp_false else.4
+	updatepop_a 1 3
+	jmp_eval_upd
+else.4
+	push_a 1
+	push_a 3
+	build _ 2 n108
+	push_a 1
+	fillh _Cons 2 6
+	pop_a 4
+.d 1 0
+	rtn
+.n 1 _ ea58
+.o 1 0
+n58
+	push_node _cycle_in_spine 1
+.o 2 0
+ea58
+	jsr_eval 0
+.o 2 0
+s58
+	eq_desc d156 0 0
+	jmp_true case.5
+	jmp case.6
+case.5
+	fillh _Nil 0 1
+	pop_a 1
+.d 1 0
+	rtn
+case.6
+	repl_args 3 3
+	push_a 2
+	build _ 1 n58
+	buildh _Nil 0
+	push_a 2
+	buildh _Cons 2
+	build e_StdList_d++ 2 e_StdList_n++
+	push_a 2
+	jsr_eval 0
+	create
+	push_a 1
+	update_a 1 2
+	update_a 0 1
+	pop_a 1
+	buildh _Nil 0
+	update_a 0 5
+	update_a 0 4
+	update_a 0 6
+	pop_a 1
+.d 2 0
+	jsr s58
+.o 1 0
+	update_a 1 4
+	updatepop_a 0 3
 .d 3 0
+	jmp e_StdList_s++
+.o 1 0
+s55
+	buildh d156 0
+	buildh d156 0
+	buildI 28
+	buildh d155 3
+	buildh d156 0
+	buildh d156 0
+	buildI 24
+	buildh d155 3
+	buildI 26
+	buildh d155 3
+	buildh d156 0
+	buildI 21
+	buildh d155 3
+	buildh d156 0
+	buildh d156 0
+	buildI 19
+	buildh d155 3
+	buildh d156 0
+	buildI 18
+	buildh d155 3
+	buildI 20
+	buildh d155 3
+	buildh d156 0
+	buildh d156 0
+	buildh d156 0
+	buildI 11
+	buildh d155 3
+	buildI 13
+	buildh d155 3
+	buildh d156 0
+	buildh d156 0
+	buildI 8
+	buildh d155 3
+	buildh d156 0
+	buildI 7
+	buildh d155 3
+	buildI 10
+	buildh d155 3
+	buildh d156 0
+	buildh d156 0
+	buildI 1
+	buildh d155 3
+	buildI 3
+	buildh d155 3
+	buildI 15
+	fillh d155 3 3
+.d 1 0
 	rtn

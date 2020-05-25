@@ -42,8 +42,7 @@ Move p v = { p & x = p.x + v.dx, y = p.y + v.dy }
 :: Tree a = Node a (Tree a) (Tree a)
           | Leaf
 
-ourTree :: (Tree Int)
-ourTree = Node 15(Node 3(Node 1 Leaf Leaf)(Node 10(Node 7 Leaf (Node 8 Leaf Leaf))(Node 13 (Node 11 Leaf Leaf) Leaf)))(Node 20 (Node 18 Leaf (Node 19 Leaf Leaf)) (Node 21 Leaf (Node 26 (Node 24 Leaf Leaf) (Node 28 Leaf Leaf))))
+
 // Start = ourTree
 
 treesort :: ([a]-> [a]) | Eq, Ord a
@@ -363,14 +362,57 @@ instance one (Vector3 a) | one a
 where
   one = {x0=one, x1=one,x2=one}  
 
+instance + (Vector3 a) | PlusMin a 
+where 
+  (+) {x0 = p1, x1 = p2, x2 = p3 } {x0 = v1, x1 = v2, x2= v3 } = {x0 = p1+v1,x1 = p2+v2, x2 = p3 + v3}
+
 v1 :: (Vector3 Int) 
 v1 = {x0 = 2, x1 = 3, x2 = 4}
 
 v2 :: (Vector3 Int)
 v2 = {x0 = 2, x1 = 3, x2 = 4}
 
+
+ourTree :: (Tree Int)
+ourTree = Node 15(Node 3(Node 1 Leaf Leaf)(Node 10(Node 7 Leaf (Node 8 Leaf Leaf))(Node 13 (Node 11 Leaf Leaf) Leaf)))(Node 20 (Node 18 Leaf (Node 19 Leaf Leaf)) (Node 21 Leaf (Node 26 (Node 24 Leaf Leaf) (Node 28 Leaf Leaf))))
 // Start:: (Vector3 Int)
-// Start = one
+// Start = one + v1
+
+dotProduct:: (Vector3 a) (Vector3 a) -> a | *, + a 
+dotProduct {x0 = p1, x1 = p2, x2 = p3 } {x0 = v1, x1 = v2, x2= v3 } = p1 * v1 + p2 * v2 + p3 * v3
+
+
+// :: Tree a = Node a (Tree a) (Tree a) | Leaf
+
+remove:: a [a] -> [a] | Eq a
+remove _ [] = []
+remove y [x:xs]
+| y == x = xs 
+= [x: (remove y xs)]
+
+treeToList:: (Tree a) -> [a]
+treeToList Leaf = []
+treeToList (Node x l r) = treeToList l ++ [x] ++ treeToList r
+
+listToTree:: [a] -> (Tree a)
+listToTree [] = Leaf
+listToTree [x:xs] = Node x (listToTree xs) Leaf  
+where 
+  l = sort list
+
+
+levelBalance :: [a] -> (Tree a) | Ord, Eq a
+levelBalance list
+| isEmpty list = Leaf
+= (Node (sorted!!mid) (levelBalance (take mid sorted)) (levelBalance (drop (mid+1) sorted)))
+    where
+        sorted = sort (removeDup list)
+        mid = (length sorted)/2
+
+
+Start = levelBalanced (remove 8 (treeToList ourTree))
+
+// Start = dotProduct v1 v2
 
 /// 
  
